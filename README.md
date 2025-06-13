@@ -47,7 +47,6 @@ npm run test
   - `add.cpp` and `add.hpp` - Native C++ code
 - `src/ts/` - TypeScript source code
   - `index.ts` - TypeScript interface for the native addon
-  - `__tests__` - Tests and their setup file
 - `modules/` - Assertion tests of dist for both CJS and ESM
 - `CMakeLists.txt` - CMake configuration
 - `tsconfig.json` - TypeScript configuration
