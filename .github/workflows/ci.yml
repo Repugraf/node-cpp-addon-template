@@ -40,12 +40,15 @@ jobs:
     - name: Run Node.js tests
       run: npm run test:node
     
+    # Bun tests are disabled on Windows due to a known segfault issue with native modules
     - name: Setup Bun
+      if: matrix.os != 'windows-latest'
       uses: oven-sh/setup-bun@v1
       with:
         bun-version: latest
     
     - name: Run Bun tests
+      if: matrix.os != 'windows-latest'
       run: npm run test:bun
     
     - name: Setup Deno
