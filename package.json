@@ -19,8 +19,7 @@
     "test:deno": "deno run -A modules/esm.mjs",
     "test:unit": "vitest --no-watch",
     "test": "npm run test:node && npm run test:unit",
-    "prebuild": "npm run clean",
-    "pretest": "npm run build",
+    "postinstall": "node scripts/ensure-native-addon.js",
     "lint": "eslint . --ext .ts",
     "lint:fix": "eslint . --ext .ts --fix",
     "format": "prettier --write \"**/*.{ts,js,json,md}\""
