@@ -17,8 +17,29 @@ interface NativeAddon {
 // Create require function for ESM
 const require = createRequire(import.meta.url);
 
+// Try different possible paths for the native addon
+const possiblePaths = [
+  join(projectRoot, "build/Release/native_addon.node"),
+  join(projectRoot, "build/native_addon.node"),
+  join(projectRoot, "native_addon.node"),
+];
+
+// Find the first path that exists
+let nativeAddonPath = possiblePaths.find(path => {
+  try {
+    require.resolve(path);
+    return true;
+  } catch {
+    return false;
+  }
+});
+
+if (!nativeAddonPath) {
+  throw new Error(`Could not find native addon. Tried paths: ${possiblePaths.join(", ")}`);
+}
+
 // Load the native addon
-const nativeAddon: NativeAddon = require(join(projectRoot, "build/Release/native_addon.node"));
+const nativeAddon: NativeAddon = require(nativeAddonPath);
 
 export const add = (a: number, b: number): number => {
   return nativeAddon.add(a, b);
