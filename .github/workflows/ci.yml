@@ -23,6 +23,17 @@ jobs:
         node-version: ${{ matrix.node-version }}
         cache: 'npm'
     
+    - name: Install CMake
+      uses: jwlawson/actions-setup-cmake@v1.14
+      with:
+        cmake-version: 'latest'
+    
+    - name: Install Windows Build Tools
+      if: matrix.os == 'windows-latest'
+      run: |
+        npm install --global --production windows-build-tools
+        npm config set msvs_version 2019
+    
     - name: Install dependencies
       run: npm ci
     
