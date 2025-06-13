@@ -1,6 +1,6 @@
-import { join, dirname } from "path";
-import { fileURLToPath } from "url";
-import { createRequire } from "module";
+import { join, dirname } from "node:path";
+import { fileURLToPath } from "node:url";
+import { createRequire } from "node:module";
 
 // Get the directory name of the current module
 const __filename = fileURLToPath(import.meta.url);
