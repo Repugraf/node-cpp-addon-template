@@ -37,32 +37,5 @@ jobs:
     - name: Install dependencies
       run: npm ci
     
-    - name: Build with verbose output
-      run: |
-        npm run clean
-        npm run build:native -- --verbose
-        npm run build:ts
-    
-    - name: List build directory (Unix)
-      if: matrix.os != 'windows-latest'
-      run: |
-        echo "Listing build directory:"
-        ls -la build/
-        if [ -d "build/Release" ]; then
-          echo "Listing build/Release directory:"
-          ls -la build/Release/
-        fi
-    
-    - name: List build directory (Windows)
-      if: matrix.os == 'windows-latest'
-      shell: pwsh
-      run: |
-        Write-Host "Listing build directory:"
-        Get-ChildItem -Path "build" -Force
-        if (Test-Path "build/Release") {
-          Write-Host "Listing build/Release directory:"
-          Get-ChildItem -Path "build/Release" -Force
-        }
-    
     - name: Test
       run: npm test
