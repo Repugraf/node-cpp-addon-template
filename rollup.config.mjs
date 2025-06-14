@@ -11,6 +11,7 @@ const config = [
         file: "dist/esm/index.mjs",
         format: "esm",
         sourcemap: true,
+        exports: "named",
       },
     ],
     plugins: [
@@ -33,6 +34,7 @@ const config = [
         file: "dist/cjs/index.cjs",
         format: "cjs",
         sourcemap: true,
+        exports: "named",
       },
     ],
     plugins: [

@@ -20,6 +20,6 @@ const require = createRequire(import.meta.url);
 // Load the native addon
 const nativeAddon: NativeAddon = require(join(projectRoot, "build/Release/native_addon.node"));
 
-export const add = (a: number, b: number): number => {
-  return nativeAddon.add(a, b);
-};
+export const { add } = nativeAddon;
+
+export { nativeAddon as default };
