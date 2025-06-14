@@ -22,4 +22,4 @@ const nativeAddon: NativeAddon = require(join(projectRoot, "build/Release/native
 
 export const { add } = nativeAddon;
 
-export { nativeAddon as default };
+export default nativeAddon;
